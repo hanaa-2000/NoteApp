@@ -54,12 +54,15 @@ class NoteItem extends StatelessWidget {
             ),
 
           ),
-          Text(
+          Padding(
+            padding:const EdgeInsets.only(right: 16),
+            child:Text(
             '21 May , 2022',
             style: TextStyle(
               color: Colors.black.withOpacity(.4),
               fontSize: 16.0,
             ),
+          ),
           ),
         ],
       ),
