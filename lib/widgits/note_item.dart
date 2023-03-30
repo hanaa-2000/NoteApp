@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:note_app/screens/edit_view.dart';
 
@@ -47,7 +49,6 @@ class NoteItem extends StatelessWidget {
               onPressed: (){},
               icon: const Icon(
                 Icons.delete,
-              //  FontAwsomeIcon.trash,
                 color: Colors.black,
                 size: 24.0,
               ),
