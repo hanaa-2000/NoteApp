@@ -1,15 +1,28 @@
 buildscript {
     ext.kotlin_version = '1.6.10'
     repositories {
+
         google()
         mavenCentral()
+        maven {
+            url =uri( 'http://storage.flutter-io.cn')
+            allowInsecureProtocol = true
+        }
+
+        maven {
+            url =uri('http://pub.flutter-io.cn')
+            allowInsecureProtocol = true
+        }
+
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:7.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+
 }
+
 
 allprojects {
     repositories {

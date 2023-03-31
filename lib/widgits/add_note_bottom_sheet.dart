@@ -7,10 +7,21 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 16.0) ,
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0) ,
     child: SingleChildScrollView (
-    child:Column(
+    child:AddNoteForm(),
+    ),
+    );
+  }
+}
+
+class AddNoteForm extends StatelessWidget {
+  const AddNoteForm({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       children: const [
         SizedBox(
           height: 32.0,
@@ -31,8 +42,6 @@ class AddNoteBottomSheet extends StatelessWidget {
           height: 16.0,
         ),
       ],
-    ),
-    ),
     );
   }
 }
