@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/constant/constant.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/screens/home_page.dart';
 
 void main() async{
