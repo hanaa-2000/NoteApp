@@ -16,7 +16,7 @@ class Home_Page extends StatelessWidget {
               ),
               context: context,
               builder: (context){
-            return const AddNoteBottomSheet();
+            return AddNoteBottomSheet();
           });
         },
         child: const Icon(
