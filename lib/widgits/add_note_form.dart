@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/cubits/cubit.dart';
+import 'package:note_app/cubits/state.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/widgits/custom_button.dart';
 import 'package:note_app/widgits/custom_text_field.dart';
@@ -46,23 +47,28 @@ class _AddNoteForm extends State<AddNoteForm> {
           const SizedBox(
             height: 40.0,
           ),
-          CustomButtonSheet(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                var noteModel = NoteModel(
-                    title: title!,
-                    subTitle: subTitle!,
-                    date: DateTime.now().toString(),
-                    color: Colors.blue.value);
-                BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-              }
-              setState(() {});
-            },
-          ),
-          const SizedBox(
+         BlocBuilder<AddNoteCubit,AddNoteState>(
+             builder: (context,state){
+               return CustomButtonSheet(
+                 isLoading: state is AddNoteLoading ? true :false,
+                 onTap: () {
+                   if (formKey.currentState!.validate()) {
+                     formKey.currentState!.save();
+                     var noteModel = NoteModel(
+                         title: title!,
+                         subTitle: subTitle!,
+                         date: DateTime.now().toString(),
+                         color: Colors.blue.value);
+                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                   } else {
+                     autovalidateMode = AutovalidateMode.always;
+                   }
+                   setState(() {});
+                 },
+               );
+             },
+         ),
+           const SizedBox(
             height: 16.0,
           ),
         ],

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:note_app/constant/constant.dart';
 
 class CustomButtonSheet extends StatelessWidget {
-  const CustomButtonSheet({Key? key, required this.onTap}) : super(key: key);
+  const CustomButtonSheet({Key? key, required this.onTap, this.isLoading=false}) : super(key: key);
   final void Function()? onTap;
-
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,9 +16,14 @@ class CustomButtonSheet extends StatelessWidget {
           color: kPrimaryColors,
           borderRadius: BorderRadius.circular(8.0),
         ),
-      child: const Center(
-        child: Text(
-          'Save',
+      child:  Center(
+        child: isLoading ? const SizedBox(
+        height: 24.0,
+            width: 24.0,
+            child: CircularProgressIndicator(color: Colors.black,)
+        ) :
+        const Text(
+          'Add',
           style: TextStyle(
            color: Colors.black,
             fontSize: 20,
