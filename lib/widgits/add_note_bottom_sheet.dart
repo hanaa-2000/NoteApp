@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/cubits/add_notes/cubit.dart';
 import 'package:note_app/cubits/add_notes/state.dart';
+import 'package:note_app/cubits/read_notes/cubit_read.dart';
 import 'package:note_app/widgits/add_note_form.dart';
 
 
@@ -15,9 +16,11 @@ AddNoteBottomSheet({Key? key}) : super(key: key);
         listener: (context,state){
           if(state is AddNoteFailure){
             print("Failed ${state.messageErr}");
-
           }
+
           if(state is AddNoteSuccess){
+
+            BlocProvider.of<ReadNotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
           }
         },
